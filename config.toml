@@ -1,0 +1,23 @@
+baseURL = "https://adamgetchell.org/"
+languageCode = "en-us"
+title = "Adam's Entropy"
+theme = "ananke"
+
+sectionPagesMenu = "main"
+paginate = 5
+enableRobotsTXT = true
+
+[params]
+  description = "One particular random walk through life."
+  twitter = "https://twitter.com/adamgetchell"
+  linkedin = "https://linkedin.com/in/adamgetchell"
+  github = "https://github.com/acgetchell"
+  background_color_class = "bg-black"
+  featured_image = "/img/lakeside.jpeg"
+  recent_posts_number = 3
+  show_reading_time = true
+
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"

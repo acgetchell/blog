@@ -12,6 +12,7 @@ enableRobotsTXT = true
   twitter = "https://twitter.com/adamgetchell"
   linkedin = "https://linkedin.com/in/adamgetchell"
   github = "https://github.com/acgetchell"
+  keybase = "https://keybase.io/adamgetchell"
   background_color_class = "bg-black"
   featured_image = "/img/lakeside.jpeg"
   recent_posts_number = 3

@@ -6,7 +6,25 @@ draft: false
 [Causal Dynamical Triangulations][1] computes the path integral of the
 quantum universe numerically.
 
-To do that you use the [Metropolis-Hastings][2] algorithm, which is a member of
+$$I_{EH}=\int\mathcal{D}[g(M)]e^{iS_{EH}} \rightarrow  \sum \frac{1}{C_t}e^{-S_{R}}$$
+
+Where $S_{EH}$ is the Einstein-Hilbert action:
+
+$$S_{EH}=\int \left[\frac{1}{2\kappa}(R-2\Lambda)+\mathcal{L}_{M}\right]\sqrt{-g}d^4x$$
+
+
+ And $S_{R}$ is the Regge action:
+
+ $$S_{R}=\frac{1}{8\pi G}
+ \left[\sum_{hinges}A_i\delta_i+\Lambda\sum_{simplices}V_i\right]$$
+
+_N.B. A [Wick rotation] converts the factor of $i$ in the continuous path
+integral to a minus sign in the discrete path integral. In the Einstein-Hilbert
+action we keep $\Lambda$, the Cosmological Constant, but ignore $\mathcal{L}$,
+the matter Lagrangian. In the Regge action, we are essentially summing areas
+times angles for the first term plus volumes in the second term._
+
+To do this you use the [Metropolis-Hastings][2] algorithm, which is a member of
 a more general class of algorithms known as [Markov Chain Monte Carlo (MCMC)][3]
 methods, in particular random walk Monte Carlo methods.
 
@@ -57,3 +75,4 @@ calculate 4D path integrals.)
 [9]: https://github.com/CGAL/cgal-swig-bindings
 [10]: http://arxiv.org/abs/1305.2932
 [11]: http://arxiv.org/abs/hep-th/0505113
+[Wick rotation]: https://en.wikipedia.org/wiki/Wick_rotation

@@ -87,7 +87,7 @@ The middle move takes a (1,3) simplex and a (3,1) simplex and converts it to
 three (1,3) simplices plus three (3,1) simplices. This is a (2,6) move along
 with the reverse (6,2) move.
 
-The bottom move takes two (1,3) simplces and two (3,1) simplices and makes
+The bottom move takes two (1,3) simplices and two (3,1) simplices and makes
 different (1,3) and (3,1) simplices. This is called a (4,4) move, and it is
 it's own reverse.
 
@@ -123,7 +123,21 @@ history except the previous move,[^6] and the principle of detailed balance, whi
 states that the probability of transitioning from $x\rightarrow x\prime$ equals
 the probability of $x\prime\rightarrow x$.
 
-By attempting a large number of moves, some of which will be accepted and
+$a_{1}$ is easy to calculate: you just keep track of the total successful
+moves of each type.
+
+$a_{2}$ is likewise simple:
+
+* A (2,3) move will change
+$N_1^{TL}$ and $N_3^{(2,2)}$ by +1 each; a (3,2) by -1 each.
+
+* A (2,6) move changes $N_3^{(3,1)}$ by +4 and $N_1^{TL}$ by +2; a (6,2)
+by -4 and -2 respectively
+
+* A (4,4) move doesn't change the action at all; $a_2 = 1$, and only $a_1$ is
+needed.
+
+By attempting a large number of moves, some of which will be accepted[^7] and
 some of which will be rejected, we can approximate the distribution thus
 producing an [ensemble].
 
@@ -187,6 +201,11 @@ triangulations, i.e., triangulations are equivalent to manifolds.
 
 [^6]: It would be almost hopelessly complex if we had to consider the entire
 history of the universe to advance a single timestep!
+
+[^7]: Alas, it isn't quite this simple because Metropolis-Hastings behaves
+badly (_gets stuck_) if the acceptance ratio of moves is below ~25%.
+Alternatives are needed if this is the case, which, for sufficiently large
+triangulations, indeed occurs.
 
 
 [1]: http://arxiv.org/abs/hep-th/0105267

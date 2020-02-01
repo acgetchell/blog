@@ -119,9 +119,9 @@ making all other moves, and $a_{2}$ is the change in the action caused by
 making $\text{move}[i]$.
 
 This comes from the fact that we are using Markov chains, which forget all
-history except the previous move,[^6] and the principle of detailed balance, which
-states that the probability of transitioning from $x\rightarrow x\prime$ equals
-the probability of $x\prime\rightarrow x$.
+history except the previous move,[^6] and the principle of detailed balance,
+which states that the probability of transitioning from $x\rightarrow x\prime$
+equals the probability of $x\prime\rightarrow x$.
 
 $a_{1}$ is easy to calculate: you just keep track of the total successful
 moves of each type.
@@ -132,7 +132,7 @@ $a_{2}$ is likewise simple:
 $N_1^{TL}$ and $N_3^{(2,2)}$ by +1 each; a (3,2) by -1 each.
 
 * A (2,6) move changes $N_3^{(3,1)}$ by +4 and $N_1^{TL}$ by +2; a (6,2)
-by -4 and -2 respectively
+by -4 and -2 respectively.
 
 * A (4,4) move doesn't change the action at all; $a_2 = 1$, and only $a_1$ is
 needed.
@@ -171,11 +171,11 @@ I do need to sleep sometime.
 
 [^1]: A [Wick rotation] converts the factor of $i$ in the continuous path
 integral to a minus sign in the discrete path integral. In the Einstein-Hilbert
-action we keep $\Lambda$, the Cosmological Constant, but ignore
+action we keep $\Lambda$, the Cosmological constant, but ignore
 $\mathcal{L}_{M}$,
-the matter [Lagrangian]. In the Regge action, we are essentially summing areas
-times angles for the first term plus volumes times the Cosmological constant
-in the second term.
+the matter [Lagrangian] density. In the Regge action, we are essentially
+summing areas times angles for the first term plus volumes times the
+Cosmological constant in the second term.
 
 [^2]: Or at least, enough times for the ensembles to "thermalize" into
 representative distributions on which we can accurately sample the [posterior].
@@ -188,7 +188,7 @@ Cosmological constant. See? All numbers.
 
 [^4]: I first attempted to do this from scratch in [Lisp], [Clojure], [F#],
 and [Python]. I quickly came to the realization that implementing [Delaunay
-Triangulations][5] and the necessary operations was, in fact, several PhDs worth
+Triangulations][5] and the necessary operations was several PhDs worth
 of research in its own right (_which, in fact, [CGAL] is_). The choice of [CGAL]
 influenced the choice of language; [Python] almost worked, but the
 [SWIG Python bindings][9] weren't up to the task at the time. (_They still lack

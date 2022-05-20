@@ -88,7 +88,6 @@ Special thanks to
 in
 Hugo](https://github.com/budparr/gohugo-theme-ananke/issues/129)!</span>  
 
-
 *N.B. There's a good [followup
 post](http://blogs.discovermagazine.com/cosmicvariance/2009/07/05/catching-the-waves/)
 on [Cosmic Variance](http://blogs.discovermagazine.com/cosmicvariance/),

@@ -1,11 +1,19 @@
+title = "Adam's Entropy"
 baseURL = "https://adamgetchell.org/"
 languageCode = "en-us"
-title = "Adam's Entropy"
-theme = "ananke"
+theme = ["github.com/theNewDynamic/gohugo-theme-ananke"]
 
-sectionPagesMenu = "main"
-paginate = 5
+DefaultContentLanguage = "en"
+SectionPagesMenu = "main"
+Paginate = 5
+googleAnalytics = ""
 enableRobotsTXT = true
+
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
 
 [params]
   description = "One particular random walk through life."
@@ -14,11 +22,5 @@ enableRobotsTXT = true
   github = "https://github.com/acgetchell"
   keybase = "https://keybase.io/adamgetchell"
   background_color_class = "bg-black"
-  featured_image = "/img/lakeside.jpeg"
   recent_posts_number = 3
   show_reading_time = true
-
-[sitemap]
-  changefreq = "monthly"
-  priority = 0.5
-  filename = "sitemap.xml"

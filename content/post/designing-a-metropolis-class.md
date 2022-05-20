@@ -12,13 +12,10 @@ Where $S_{EH}$ is the Einstein-Hilbert action:
 
 $$S_{EH}=\int \left[\frac{1}{2\kappa}(R-2\Lambda)+\mathcal{L}_{M}\right]\sqrt{-g}d^4x$$
 
-
  And $S_{R}$ is the Regge action:
 
  $$S_{R}=\frac{1}{8\pi G}
  \left[\sum_{hinges}A_i\delta_i+\Lambda\sum_{simplices}V_i\right]$$
-
-
 
 > What is a path integral and why would I want to compute it?
 
@@ -168,7 +165,6 @@ We'll get into that next time!
 
 I do need to sleep sometime.
 
-
 [^1]: A [Wick rotation] converts the factor of $i$ in the continuous path
 integral to a minus sign in the discrete path integral. In the Einstein-Hilbert
 action we keep $\Lambda$, the Cosmological constant, but ignore
@@ -206,7 +202,6 @@ history of the universe to advance a single timestep!
 badly (_gets stuck_) if the acceptance ratio of moves is below ~25%.
 Alternatives are needed if this is the case, which, for sufficiently large
 triangulations, indeed occurs.
-
 
 [1]: http://arxiv.org/abs/hep-th/0105267
 [Metropolis-Hastings]: http://thy.phy.bnl.gov/~creutz/mypubs/pub044.pdf

@@ -1,6 +1,6 @@
 name: CI
 
-on: [workflow_dispatch]
+on: [push, workflow_dispatch]
 
 jobs:
   deploy:
@@ -29,7 +29,7 @@ jobs:
           personal_token: ${{ secrets.TOKEN }}
           external_repository: acgetchell/acgetchell.github.io
           publish_dir: ./
-          keep_files: true
+          # keep_files: true
           user_name: acgetchell
           user_email: adam@adamgetchell.org
           publish_branch: master

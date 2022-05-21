@@ -24,3 +24,10 @@ enableRobotsTXT = true
   background_color_class = "bg-black"
   recent_posts_number = 3
   show_reading_time = true
+  enableGitInfo = true
+
+[frontmatter]
+  date = ['date', 'publishDate', 'lastmod']
+  expiryDate = ['expiryDate']
+  lastmod = [':git', 'lastmod', 'date', 'publishDate']
+  publishDate = ['publishDate', 'date']

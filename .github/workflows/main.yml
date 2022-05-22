@@ -35,7 +35,7 @@ jobs:
         with:
           personal_token: ${{ secrets.TOKEN }}
           external_repository: acgetchell/acgetchell.github.io
-          publish_branch: master
+          publish_branch: main
           publish_dir: ./public
           # keep_files: true
           user_name: acgetchell

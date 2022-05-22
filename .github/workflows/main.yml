@@ -12,7 +12,7 @@ jobs:
       - name: Setup hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: "0.99.1"
+          hugo-version: 'latest'
 
       - name: Update theme
         # Using Modules for Theme
@@ -25,11 +25,12 @@ jobs:
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
         with:
           personal_token: ${{ secrets.TOKEN }}
           external_repository: acgetchell/acgetchell.github.io
           publish_branch: master
-          publish_dir: ./
+          publish_dir: ./public
           # keep_files: true
           user_name: acgetchell
           user_email: adam@adamgetchell.org

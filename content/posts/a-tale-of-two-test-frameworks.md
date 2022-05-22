@@ -112,6 +112,8 @@ Recall, these are the exact same tests!
 
 So, which one should I use going forward?
 
+[Twitter poll]
+
 [^1]: The project uses [CGAL] which uses [Boost] and [Eigen], those dependencies alone account for over a hundred libraries. You absolutely need
 a package manager like [vcpkg] to handle it sanely.
 
@@ -132,3 +134,4 @@ a package manager like [vcpkg] to handle it sanely.
 [Eigen]: https://eigen.tuxfamily.org/index.php?title=Main_Page
 [vcpkg]: https://vcpkg.io/en/index.html
 [gcc]: https://gcc.gnu.org
+[Twitter poll]: https://twitter.com/adamgetchell/status/1528422610261798913?s=20&t=0jqURIb_nIZWKbV6vzy3KA

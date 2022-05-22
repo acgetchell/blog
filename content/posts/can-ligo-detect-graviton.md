@@ -86,7 +86,7 @@ neutrinos.
 Special thanks to
 [MathJAX](http://www.mathjax.org/) and these posts on how to use [MathJax
 in
-Hugo](https://github.com/budparr/gohugo-theme-ananke/issues/129)!</span>  
+Hugo](https://github.com/budparr/gohugo-theme-ananke/issues/129)![^1]
 
 *N.B. There's a good [followup
 post](http://blogs.discovermagazine.com/cosmicvariance/2009/07/05/catching-the-waves/)
@@ -94,3 +94,11 @@ on [Cosmic Variance](http://blogs.discovermagazine.com/cosmicvariance/),
 along with an [earlier
 entry](http://blogs.discovermagazine.com/cosmicvariance/2007/04/25/the-difficult-childhood-of-gravitational-waves/)
 giving some good background information.*
+
+[^1]: This doesn't work anymore, as recent [Hugo]/[Ananke] updates changed [MathJax]/[LaTeX] integration. See [here][1] for the fix.
+
+[Hugo]:  https://gohugo.io
+[Ananke]: https://github.com/theNewDynamic/gohugo-theme-ananke
+[MathJax]: https://www.mathjax.org
+[LaTeX]: https://www.latex-project.org
+[1]: https://discourse.gohugo.io/t/what-is-the-canonical-way-to-enable-latex/38721/3

@@ -4,7 +4,7 @@ date: 2022-05-20T12:57:43-07:00
 draft: false
 ---
 
-As I've mentioned earlier[^1], I'm writing some [scientific code][1] that needs to be accurate and fast.
+As I've mentioned earlier, I'm writing some [scientific code][1] that needs to be accurate and fast.
 
 > That is, some entity other than me should check for inevitable errors.
 
@@ -12,7 +12,7 @@ So I started Test Driven Development using [GoogleTest]. Then I saw Behavior Dri
 
 > This was a bit of a headache, as I had to essentially rewrite tests from scratch, but I learned to write better tests.
 
-That went well, but when I had a few folks look over the code, they noted the difficulty of getting the stack up and running[^2].
+That went well, but when I had a few folks look over the code, they noted the difficulty of getting the stack up and running[^1].
 
 > Also, [gcc] started not being able to compile the project with tests enabled.
 
@@ -112,10 +112,7 @@ Recall, these are the exact same tests!
 
 So, which one should I use going forward?
 
-[^1]: Since the (regrettably long) last time I updated this blog, [Hugo]/[Ananke] updates [broke LaTeX][5]. So those pages are full of unintelligible equations
-until I get it working again. Surprisingly, there doesn't seem to be a canonical way of enabling [MathJax]/[LaTeX]/whatever in recent versions of Hugo.
-
-[^2]: The project uses [CGAL] which uses [Boost] and [Eigen], those dependencies alone account for over a hundred libraries. You absolutely need
+[^1]: The project uses [CGAL] which uses [Boost] and [Eigen], those dependencies alone account for over a hundred libraries. You absolutely need
 a package manager like [vcpkg] to handle it sanely.
 
 [1]: https://www.adamgetchell.org/CDT-plusplus/
@@ -135,8 +132,3 @@ a package manager like [vcpkg] to handle it sanely.
 [Eigen]: https://eigen.tuxfamily.org/index.php?title=Main_Page
 [vcpkg]: https://vcpkg.io/en/index.html
 [gcc]: https://gcc.gnu.org
-[5]: https://discourse.gohugo.io/t/what-is-the-canonical-way-to-enable-latex/38721/3
-[Hugo]: https://gohugo.io
-[Ananke]: https://github.com/theNewDynamic/gohugo-theme-ananke
-[MathJax]: https://www.mathjax.org
-[LaTeX]: https://www.latex-project.org

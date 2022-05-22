@@ -1,7 +1,7 @@
 ---
 title: "A Tale of Two Test Frameworks"
 date: 2022-05-20T12:57:43-07:00
-draft: true
+draft: false
 ---
 
 As I've mentioned earlier[^1], I'm writing some [scientific code][1] that needs to be accurate and fast.
@@ -30,7 +30,7 @@ So now I have [features/doctest] and [features/catch2v3] for side-by-side compar
 
 Right away, I noticed that [clang-tidy] does not like [doctest]:
 
-```
+```bash
 adam@hapkido ~ $ clang-tidy --version
 Homebrew LLVM version 13.0.1
   Optimized build.
@@ -40,7 +40,7 @@ Homebrew LLVM version 13.0.1
 
 (*Full output [here][4]:*)
 
-```
+```bash
 adam@hapkido ~/projects/CDT-plusplus (develop) $ git checkout feature/doctest
 Switched to branch 'feature/doctest'
 Your branch is up to date with 'origin/feature/doctest'.
@@ -83,15 +83,15 @@ However, it does swimmingly with [PVS-Studio]:
 
 Now, let's switch to the [features/catch2v3] branch:
 
-~~~
+```bash
 adam@hapkido ~/projects/CDT-plusplus (feature/doctest) $ git checkout feature/catch2v3
 Switched to branch 'feature/catch2v3'
 Your branch is up to date with 'origin/feature/catch2v3'.
-~~~
+```
 
 And run clang-tidy:
 
-~~~
+```bash
 ... elided ...
 [13/26] Building CXX object tests/CMakeFiles/CDT_test.dir/Manifold_test.cpp.o
 /Users/adam/projects/CDT-plusplus/tests/Manifold_test.cpp:179:9: warning: 'const auto manifold_type' can be declared as 'const auto *const manifold_type' [readability-qualified-auto]
@@ -100,7 +100,7 @@ And run clang-tidy:
         const auto *const 
 
 ... etc ...
-~~~
+```
 
 It's pretty much clear of anything [Catch2]-related.
 
@@ -117,7 +117,6 @@ until I get it working again. Surprisingly, there doesn't seem to be a canonical
 
 [^2]: The project uses [CGAL] which uses [Boost] and [Eigen], those dependencies alone account for over a hundred libraries. You absolutely need
 a package manager like [vcpkg] to handle it sanely.
-
 
 [1]: https://www.adamgetchell.org/CDT-plusplus/
 [GoogleTest]: https://github.com/google/googletest

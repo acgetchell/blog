@@ -4,7 +4,7 @@ languageCode = "en-us"
 theme = ["github.com/theNewDynamic/gohugo-theme-ananke"]
 
 DefaultContentLanguage = "en"
-SectionPagesMenu = "main"
+sectionPagesMenu = "main"
 Paginate = 5
 googleAnalytics = ""
 enableRobotsTXT = true

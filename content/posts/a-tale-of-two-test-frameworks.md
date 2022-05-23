@@ -112,8 +112,19 @@ Recall, these are the exact same tests!
 
 So, which one should I use going forward?
 
+> If you're curious, you can play around with this yourself via Docker:
+
+```bash
+docker pull acgetchell/cdt-plusplus
+docker run -it --name cdt acgetchell/cdt-plusplus
+```
+
+> From there, checkout `feature/catch2v3` or `feature/doctest`.[^2]
+
 [^1]: The project uses [CGAL] which uses [Boost] and [Eigen], those dependencies alone account for over a hundred libraries. You absolutely need
 a package manager like [vcpkg] to handle it sanely.
+
+[^2]: You'll need to obtain [PVS-Studio] on your own license.
 
 [1]: https://www.adamgetchell.org/CDT-plusplus/
 [GoogleTest]: https://github.com/google/googletest

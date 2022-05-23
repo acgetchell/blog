@@ -14,7 +14,7 @@ So I started Test Driven Development using [GoogleTest]. Then I saw Behavior Dri
 
 That went well, but when I had a few folks look over the code, they noted the difficulty of getting the stack up and running[^1].
 
-> Also, [gcc] started not being able to compile the project with tests enabled.
+> Also, [gcc] started not being able to compile the project with tests enabled, which you can check by running on Docker, as given below.
 
 So I looked around again, and found [doctest], which was based on [Catch2] but offered [much faster compile times][2] and the model of
 including tests right into the code (although I opted to keep them separate, for now). Around this time I'd asked someone else to look at a few things in my project, so
@@ -112,14 +112,19 @@ Recall, these are the exact same tests!
 
 So, which one should I use going forward?
 
-> If you're curious, you can play around with this yourself via Docker:
+[Twitter Poll]
+
+N.B. If you're curious, you can play around with this yourself via Docker:
 
 ```bash
 docker pull acgetchell/cdt-plusplus
 docker run -it --name cdt acgetchell/cdt-plusplus
 ```
 
-> From there, checkout `feature/catch2v3` or `feature/doctest`.[^2]
+From there, checkout `feature/catch2v3` or `feature/doctest`.[^2]
+
+Running `scripts/fast-build.sh` (i.e. no tests) will work, but compiling/running tests with `scripts/build.sh` fails.
+If you know why, pull requests are welcome!
 
 [^1]: The project uses [CGAL] which uses [Boost] and [Eigen], those dependencies alone account for over a hundred libraries. You absolutely need
 a package manager like [vcpkg] to handle it sanely.
@@ -143,3 +148,4 @@ a package manager like [vcpkg] to handle it sanely.
 [Eigen]: https://eigen.tuxfamily.org/index.php?title=Main_Page
 [vcpkg]: https://vcpkg.io/en/index.html
 [gcc]: https://gcc.gnu.org
+[Twitter Poll]: https://twitter.com/adamgetchell/status/1528791092748906496

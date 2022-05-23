@@ -89,7 +89,7 @@ Switched to branch 'feature/catch2v3'
 Your branch is up to date with 'origin/feature/catch2v3'.
 ```
 
-And run clang-tidy:
+And run [clang-tidy]:
 
 ```bash
 ... elided ...
@@ -114,7 +114,7 @@ So, which one should I use going forward?
 
 [Twitter Poll]
 
-N.B. If you're curious, you can play around with this yourself via Docker:
+N.B. If you're curious, you can play around with this yourself via [Docker]:
 
 ```bash
 docker pull acgetchell/cdt-plusplus
@@ -124,7 +124,7 @@ docker run -it --name cdt acgetchell/cdt-plusplus
 From there, checkout `feature/catch2v3` or `feature/doctest`.[^2]
 
 Running `scripts/fast-build.sh` (i.e. no tests) will work, but compiling/running tests with `scripts/build.sh` fails.
-If you know why, pull requests are welcome!
+If you know why, [pull requests] are welcome!
 
 [^1]: The project uses [CGAL] which uses [Boost] and [Eigen], those dependencies alone account for over a hundred libraries. You absolutely need
 a package manager like [vcpkg] to handle it sanely.
@@ -149,3 +149,5 @@ a package manager like [vcpkg] to handle it sanely.
 [vcpkg]: https://vcpkg.io/en/index.html
 [gcc]: https://gcc.gnu.org
 [Twitter Poll]: https://twitter.com/adamgetchell/status/1528791092748906496
+[Docker]: https://www.docker.com
+[pull requests]: https://github.com/acgetchell/CDT-plusplus/pulls

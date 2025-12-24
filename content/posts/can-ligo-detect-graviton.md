@@ -86,22 +86,17 @@ From the Sun, there are $10^{8}$W of gravitons and $10^{25}$W of
 neutrinos, and we can detect gravitons about $10^{-35}$ less than
 neutrinos.  
 
-Special thanks to
-[MathJAX](http://www.mathjax.org/) and these posts on how to use [MathJax
-in
-Hugo](https://github.com/budparr/gohugo-theme-ananke/issues/129)![^1]
+Special thanks to [KaTeX] for rendering the math on this site.[^1]
 
 *N.B. There's a good [followup
-post](http://web.archive.org/web/20090708032512/http://blogs.discovermagazine.com:80/cosmicvariance/2009/07/05/catching-the-waves/)
-on [Cosmic Variance](http://web.archive.org/web/20191120024349/http://blogs.discovermagazine.com/cosmicvariance/),
+post](https://web.archive.org/web/20090708032512/http://blogs.discovermagazine.com:80/cosmicvariance/2009/07/05/catching-the-waves/)
+on [Cosmic Variance](https://web.archive.org/web/20191120024349/http://blogs.discovermagazine.com/cosmicvariance/),
 along with an [earlier
-entry](http://web.archive.org/web/20170409163629/http://blogs.discovermagazine.com/cosmicvariance/2007/04/25/the-difficult-childhood-of-gravitational-waves/)
+entry](https://web.archive.org/web/20170409163629/http://blogs.discovermagazine.com/cosmicvariance/2007/04/25/the-difficult-childhood-of-gravitational-waves/)
 giving some good background information.*
 
-[^1]: This doesn't work anymore, as recent [Hugo]/[Ananke] updates changed [MathJax]/[LaTeX] integration. See [here][1] for the fix.
+[^1]: This site is built with [Zola] (theme: DeepThought) and uses [KaTeX] auto-render for [LaTeX]-style math.
 
-[Hugo]:  https://gohugo.io
-[Ananke]: https://github.com/theNewDynamic/gohugo-theme-ananke
-[MathJax]: https://www.mathjax.org
+[Zola]: https://www.getzola.org
+[KaTeX]: https://katex.org
 [LaTeX]: https://www.latex-project.org
-[1]: https://discourse.gohugo.io/t/what-is-the-canonical-way-to-enable-latex/38721/3

@@ -9,8 +9,8 @@ action-lint:
     #!/usr/bin/env bash
     set -euo pipefail
     if ! command -v actionlint >/dev/null; then
-        echo "⚠️ 'actionlint' not found. Install: brew install actionlint"
-        exit 0
+        echo "❌ 'actionlint' not found. Install: brew install actionlint"
+        exit 1
     fi
 
     files=()
@@ -43,6 +43,11 @@ markdown-lint:
     fi
 
     # Exclude content/_index.md because it is pure Zola TOML front matter (with TOML comments).
+    #
+    # Disable some rules to fit Zola-style content:
+    # - MD041: Zola posts start with TOML front matter, so the first line is not a heading.
+    # - MD013: legacy posts may contain long URLs / inline math that exceed a strict line limit.
+    # - MD025: some legacy content may contain multiple H1s.
     uvx --from pymarkdownlnt pymarkdown --disable-rules MD041,MD013,MD025 scan -r -e content/_index.md content
 
 serve:

@@ -9,7 +9,7 @@
 {% set hero_alt = section.extra.hero_alt | default(value=config.title) %}
 
 {% if hero_image %}
-<section class="hero is-medium is-dark" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('{{ hero_image }}'); background-size: cover; background-position: center;">
+<section class="hero is-medium is-dark" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('{{ hero_image | urlencode }}'); background-size: cover; background-position: center;">
   <div class="hero-body">
     <div class="container has-text-centered">
       <h1 class="title is-1">{{ section.title }}</h1>
@@ -54,6 +54,7 @@
         {% endif %}
 
         {% set posts_section = get_section(path="posts/_index.md") %}
+        {% if posts_section %}
         {% set recent_posts = posts_section.pages | slice(end=3) %}
 
         <h2 class="title is-4">Recent posts</h2>
@@ -88,6 +89,7 @@
         <div class="has-text-centered mt-6">
           <a class="button is-black is-outlined" href="/posts">View all posts</a>
         </div>
+        {% endif %}
       </div>
     </div>
   </div>

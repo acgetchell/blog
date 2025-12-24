@@ -1,10 +1,11 @@
----
-Title: Secure, Verifiable, Public Identity
-date: 2016-08-12
-lastmod: 2016-08-15
-Category: Misc
-<!-- Tags: prismbreak, keybase, protonmail, joker, cloudflare, github -->
----
++++
+title = "Secure, Verifiable, Public Identity"
+date = 2016-08-12
+updated = 2016-08-15
+
+[taxonomies]
+tags = ["security", "prismbreak", "keybase", "protonmail", "joker", "cloudflare", "github"]
++++
 
 For awhile, I've been interested in establishing a secure, verifiable, public
 identity.

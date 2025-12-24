@@ -1,8 +1,11 @@
----
-title: "Designing a Metropolis Class"
-date: 2020-01-30T00:39:09-08:00
-draft: false
----
++++
+title = "Designing a Metropolis Class"
+date = 2020-01-30T00:39:09-08:00
+draft = false
+
+[taxonomies]
+tags = ["physics", "monte-carlo", "mcmc", "metropolis-hastings", "delaunay", "cgal"]
++++
 [Causal Dynamical Triangulations][1] computes the path integral of the
 quantum universe numerically.[^1]
 

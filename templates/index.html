@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ config.title }}
+{% endblock title %}
+
+{% block content %}
+{% set hero_image = section.extra.hero_image | default(value=section.extra.featured_image | default(value="")) %}
+{% set hero_alt = section.extra.hero_alt | default(value=config.title) %}
+
+{% if hero_image %}
+<section class="hero is-medium is-dark" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('{{ hero_image }}'); background-size: cover; background-position: center;">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-1">{{ section.title }}</h1>
+      <p class="subtitle is-4">{{ section.description }}</p>
+
+      {% if config.extra.author.avatar %}
+      <figure class="image is-flex is-justify-content-center is-align-items-center mt-4">
+        <img class="is-rounded" src="{{ config.extra.author.avatar }}" style="max-width: 160px" alt="{{ hero_alt }}" />
+      </figure>
+      {% endif %}
+
+      <div class="mt-4">
+        {{ macros::social_links(social_config=config.extra.social) }}
+      </div>
+
+      <div class="mt-5">
+        <a class="button is-light is-outlined" href="/posts">Read the blog</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% else %}
+<section class="section">
+  <div class="container">
+    <div class="has-text-centered">
+      <h1 class="title is-2">{{ section.title }}</h1>
+      <p class="subtitle is-4">{{ section.description }}</p>
+      {{ macros::social_links(social_config=config.extra.social) }}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-9">
+        {% if section.content %}
+        <div class="content">
+          {{ section.content | safe }}
+        </div>
+        {% endif %}
+
+        {% set posts_section = get_section(path="posts/_index.md") %}
+        {% set recent_posts = posts_section.pages | slice(end=3) %}
+
+        <h2 class="title is-4">Recent posts</h2>
+
+        {% for page in recent_posts %}
+        <article class="box">
+          <h3 class="title is-5">
+            <a class="has-text-dark" href='{{ page.permalink }}'>
+              {{ page.title }}
+            </a>
+          </h3>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              {{ macros::page_publish_metadata(page=page) }}
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              {{ macros::page_content_metadata(page=page) }}
+            </div>
+          </div>
+          <div class="content mt-2">
+            {{ page.summary | safe }}
+            <a class="has-text-danger-dark has-text-weight-semibold" href='{{ page.permalink }}'>
+              Read More
+              <span class="icon is-small">
+                <i class="fas fa-arrow-right fa-xs"></i>
+              </span>
+            </a>
+          </div>
+        </article>
+        {% endfor %}
+
+        <div class="has-text-centered mt-6">
+          <a class="button is-black is-outlined" href="/posts">View all posts</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

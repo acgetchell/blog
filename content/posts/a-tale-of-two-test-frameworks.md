@@ -1,8 +1,11 @@
----
-title: "A Tale of Two Test Frameworks"
-date: 2022-05-20T12:57:43-07:00
-draft: false
----
++++
+title = "A Tale of Two Test Frameworks"
+date = 2022-05-20T12:57:43-07:00
+draft = false
+
+[taxonomies]
+tags = ["cpp", "testing", "googletest", "catch2", "doctest"]
++++
 
 As I've mentioned earlier, I'm writing some [scientific code][1] that needs to be accurate and fast.
 

@@ -1,6 +1,4 @@
 *DS_Store
-.hugo_build.lock
-resources/
 *frontmatter*
 .vscode/*
 public/

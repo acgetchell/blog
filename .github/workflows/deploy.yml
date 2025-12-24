@@ -37,9 +37,24 @@ jobs:
           tool: zola@0.21.0
 
       - name: Install actionlint
-        uses: taiki-e/install-action@b9c5db3aef04caffaf95a1d03931de10fb2a140f  # v2.65.1
-        with:
-          tool: actionlint
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          ACTIONLINT_VERSION="1.7.9"
+          case "$(uname -m)" in
+            x86_64) ACTIONLINT_ARCH="amd64" ;;
+            aarch64|arm64) ACTIONLINT_ARCH="arm64" ;;
+            *) echo "Unsupported arch: $(uname -m)"; exit 1 ;;
+          esac
+
+          curl -fsSL \
+            -o /tmp/actionlint.tar.gz \
+            "https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}/actionlint_${ACTIONLINT_VERSION}_linux_${ACTIONLINT_ARCH}.tar.gz"
+
+          tar -xzf /tmp/actionlint.tar.gz -C /tmp actionlint
+          sudo install -m 0755 /tmp/actionlint /usr/local/bin/actionlint
+          actionlint -version
 
       - name: Install uv
         uses: astral-sh/setup-uv@681c641aba71e4a1c380be3ab5e12ad51f415867  # v7.1.6

@@ -1,0 +1,18 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "useGitignore": true,
+  "ignorePaths": [
+    "public/**",
+    "static/**",
+    "themes/**"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "codespell-ignore-words",
+      "path": "./.codespell-ignore-words.txt",
+      "addWords": true
+    }
+  ],
+  "dictionaries": ["codespell-ignore-words"]
+}

@@ -10,9 +10,7 @@ minify_html = false
 
 # Taxonomies
 # These create /tags/ plus per-term listing pages.
-taxonomies = [
-    { name = "tags", feed = true, paginate_by = 10 },
-]
+taxonomies = [{ name = "tags", feed = true, paginate_by = 10 }]
 
 # Keep legacy filenames like 2016-08-11-foo intact in URLs.
 [slugify]
@@ -22,8 +20,8 @@ taxonomies = "on"
 anchors = "on"
 
 [link_checker]
-# This repo has older posts; avoid failing checks on external link rot.
-external_level = "warn"
+# Fail checks on broken external links.
+external_level = "error"
 
 # Feeds
 generate_feed = true
@@ -50,11 +48,11 @@ mermaid.enabled = false
 galleria.enabled = false
 
 navbar_items = [
-    { code = "en", nav_items = [
-        { url = "/", name = "Home" },
-        { url = "/posts", name = "Posts" },
-        { url = "/tags", name = "Tags" },
-    ] },
+  { code = "en", nav_items = [
+    { url = "/", name = "Home" },
+    { url = "/posts", name = "Posts" },
+    { url = "/tags", name = "Tags" },
+  ] },
 ]
 
 # Optional favicon links (left empty for now)
@@ -72,7 +70,7 @@ avatar = "/img/avatar.jpg"
 
 # Social links (theme expects keys to exist; leave unused ones empty)
 [extra.social]
-email = ""
+email = "adam@adamgetchell.org"
 facebook = ""
 github = "acgetchell"
 gitlab = ""
@@ -83,7 +81,7 @@ twitter = "adamgetchell"
 instagram = ""
 behance = ""
 google_scholar = ""
-orcid = ""
+orcid = "0000-0002-0797-0021"
 reddit = ""
 discord = ""
 bitbucket = ""

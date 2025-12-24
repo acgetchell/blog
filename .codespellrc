@@ -1,0 +1,8 @@
+[codespell]
+# CI runs codespell over: content/, templates/, and config.toml.
+# Keep this skip list as a safety net in case the scope expands.
+skip = public,static,themes
+
+# Add project-specific words/false positives to this file as needed.
+# This file is also consumed by VS Code cSpell via cspell.json.
+ignore-words = .codespell-ignore-words.txt

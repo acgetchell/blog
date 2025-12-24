@@ -92,10 +92,10 @@ in
 Hugo](https://github.com/budparr/gohugo-theme-ananke/issues/129)![^1]
 
 *N.B. There's a good [followup
-post](http://blogs.discovermagazine.com/cosmicvariance/2009/07/05/catching-the-waves/)
-on [Cosmic Variance](http://blogs.discovermagazine.com/cosmicvariance/),
+post](http://web.archive.org/web/20090708032512/http://blogs.discovermagazine.com:80/cosmicvariance/2009/07/05/catching-the-waves/)
+on [Cosmic Variance](http://web.archive.org/web/20191120024349/http://blogs.discovermagazine.com/cosmicvariance/),
 along with an [earlier
-entry](http://blogs.discovermagazine.com/cosmicvariance/2007/04/25/the-difficult-childhood-of-gravitational-waves/)
+entry](http://web.archive.org/web/20170409163629/http://blogs.discovermagazine.com/cosmicvariance/2007/04/25/the-difficult-childhood-of-gravitational-waves/)
 giving some good background information.*
 
 [^1]: This doesn't work anymore, as recent [Hugo]/[Ananke] updates changed [MathJax]/[LaTeX] integration. See [here][1] for the fix.

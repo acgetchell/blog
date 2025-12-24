@@ -167,7 +167,6 @@ Here are two videos from CloudFlare on boosting site speed and security:
 - [Increase the speed of your site - CloudFlare Performance Tips][27]
 - [User Privacy & Data Integrity][28]
 
-
 [1]: https://keybase.io/docs/kbfs
 [2]: https://keybase.io/adamgetchell
 [3]: https://protonmail.com
@@ -176,15 +175,15 @@ Here are two videos from CloudFlare on boosting site speed and security:
 [6]: http://dnssec.net
 [7]: https://www.cloudflare.com
 [8]: https://protonmail.com/support/knowledge-base/anti-spoofing/
-[9]: http://www.dkim.org
-[10]: http://www.openspf.org
+[9]: https://www.rfc-editor.org/rfc/rfc6376
+[10]: https://www.rfc-editor.org/rfc/rfc7208
 [11]: https://dmarc.org
 [12]: https://1password.com
-[13]: https://konklone.com/post/github-pages-now-sorta-supports-https-so-use-it
+[13]: http://web.archive.org/web/20240620160445/https://konklone.com/post/github-pages-now-sorta-supports-https-so-use-it
 [14]: https://en.internet.nl
 [15]: https://keybase.io/blog/2014-10-08/the-horror-of-a-secure-golden-key
 [16]: http://www.zdnet.com/article/microsoft-secure-boot-key-debacle-causes-security-panic/
-[17]: https://docs.menandmice.com/display/MM/How+to+test+DNSSEC+validation
+[17]: http://web.archive.org/web/20190128075300/https://docs.menandmice.com/display/MM/How+to+test+DNSSEC+validation
 [18]: https://thehackerblog.com/keeping-positive-obtaining-arbitrary-wildcard-ssl-certificates-from-comodo-via-dangling-markup-injection/index.html
 [19]: https://www.youtube.com/watch?v=pDmj_xe7EIQ
 [20]: http://security.stackexchange.com/questions/6730/what-is-the-difference-between-authenticity-and-non-repudiation

@@ -77,7 +77,7 @@ We can thus classify the
 (2+1) dimensional simplex as a (3,1) simplex (_3 vertices on the low timeslice
 and one vertex on the high timeslice_), a (2,2) simplex, or a (1,3) simplex.
 
-Likewise, we can name the moves similiarly.
+Likewise, we can name the moves similarly.
 
 The top move takes a (3,1) simplex and a (2,2) simplex and converts it to a
 (3,1) simplex plus two (2,2) simplices. This is called a (2,3) move, and it's
@@ -207,13 +207,13 @@ Alternatives are needed if this is the case, which, for sufficiently large
 triangulations, indeed occurs.
 
 [1]: http://arxiv.org/abs/hep-th/0105267
-[Metropolis-Hastings]: http://thy.phy.bnl.gov/~creutz/mypubs/pub044.pdf
+[Metropolis-Hastings]: https://grokipedia.com/page/Metropolis%E2%80%93Hastings_algorithm
 [3]: https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo
 [ergodic moves]: http://www.sciencedirect.com/science/article/pii/055032139290012Z
-[5]: http://www.mathworks.com/help/matlab/math/delaunay-triangulation.html
+[5]: https://en.wikipedia.org/wiki/Delaunay_triangulation
 [6]: http://link.springer.com/article/10.1007/BF02733251
 [7]: http://www.slideshare.net/acgetchell/aps-48348528
-[CGAL]: https://www.cgal.org/
+[CGAL]: https://github.com/CGAL/cgal
 [9]: https://github.com/CGAL/cgal-swig-bindings
 [10]: http://arxiv.org/abs/1305.2932
 [11]: http://arxiv.org/abs/hep-th/0505113

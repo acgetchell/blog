@@ -300,9 +300,14 @@ function documentReadyCallback() {
       let { images } = JSON.parse(el.textContent);
 
       for (let image of images) {
-        el.insertAdjacentHTML("beforeend",
-          `<a href="${image.src}"><img src="${image.src}" data-title="${image.title}" data-description="${image.description}"></a>`
-        );
+        const a = document.createElement('a');
+        a.href = image.src;
+        const img = document.createElement('img');
+        img.src = image.src;
+        img.setAttribute('data-title', image.title);
+        img.setAttribute('data-description', image.description);
+        a.appendChild(img);
+        el.appendChild(a);
       }
 
       Galleria.run(".galleria");
@@ -333,17 +338,19 @@ function documentReadyCallback() {
         center[0] += marker.geometry.coordinates[0];
         center[1] += marker.geometry.coordinates[1];
 
+        const popupContent = document.createElement('div');
+        const title = document.createElement('h3');
+        title.textContent = marker.properties.title;
+        const description = document.createElement('p');
+        description.textContent = marker.properties.description;
+        popupContent.appendChild(title);
+        popupContent.appendChild(description);
+
         new mapboxgl.Marker()
           .setLngLat(marker.geometry.coordinates)
           .setPopup(
-            new mapboxgl.Popup({ offset: 25 }) // add popups
-              .setHTML(
-                "<h3>" +
-                marker.properties.title +
-                "</h3><p>" +
-                marker.properties.description +
-                "</p>"
-              )
+            new mapboxgl.Popup({ offset: 25 })
+              .setDOMContent(popupContent)
           )
           .addTo(map);
       });

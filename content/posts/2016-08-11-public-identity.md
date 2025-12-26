@@ -4,7 +4,7 @@ date = 2016-08-12
 updated = 2016-08-15
 
 [taxonomies]
-tags = ["security", "prismbreak", "keybase", "protonmail", "joker", "cloudflare", "github"]
+tags = ["cloudflare", "github", "joker", "keybase", "prismbreak", "protonmail", "security"]
 +++
 
 For awhile, I've been interested in establishing a secure, verifiable, public

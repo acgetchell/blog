@@ -21,46 +21,11 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Install just
-        uses: taiki-e/install-action@b9c5db3aef04caffaf95a1d03931de10fb2a140f  # v2.65.1
-        with:
-          tool: just
-
-      - name: Install Zola
-        uses: taiki-e/install-action@b9c5db3aef04caffaf95a1d03931de10fb2a140f  # v2.65.1
-        with:
-          tool: zola@0.21.0
-
-      - name: Install actionlint
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          ACTIONLINT_VERSION="1.7.9"
-          case "$(uname -m)" in
-            x86_64) ACTIONLINT_ARCH="amd64" ;;
-            aarch64|arm64) ACTIONLINT_ARCH="arm64" ;;
-            *) echo "Unsupported arch: $(uname -m)"; exit 1 ;;
-          esac
-
-          curl -fsSL \
-            -o /tmp/actionlint.tar.gz \
-            "https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}/actionlint_${ACTIONLINT_VERSION}_linux_${ACTIONLINT_ARCH}.tar.gz"
-
-          tar -xzf /tmp/actionlint.tar.gz -C /tmp actionlint
-          sudo install -m 0755 /tmp/actionlint /usr/local/bin/actionlint
-          actionlint -version
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@681c641aba71e4a1c380be3ab5e12ad51f415867  # v7.1.6
-        with:
-          version: "0.9.18"
-
       - name: Run CI checks
-        run: just ci
+        uses: ./.github/actions/run-just-ci
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e  # v4.0.0
+        uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e  # v4.0.0 (tag is annotated; tag object 47f197a2200b...)
         with:
           personal_token: ${{ secrets.TOKEN }}
           external_repository: acgetchell/acgetchell.github.io

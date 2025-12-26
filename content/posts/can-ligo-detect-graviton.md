@@ -4,7 +4,7 @@ date = 2011-12-28T17:51:16-08:00
 draft = false
 
 [taxonomies]
-tags = ["physics", "gravitational-waves", "ligo", "graviton"]
+tags = ["gravitational-waves", "graviton", "ligo", "physics"]
 +++
 *A lecture given 10/27/08 by Professor Freeman Dyson of the Institute of
 Advanced Studies at Princeton, in honor of the 100th anniversary of the

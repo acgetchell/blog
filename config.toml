@@ -23,6 +23,13 @@ anchors = "on"
 # Fail checks on broken external links.
 external_level = "error"
 
+# The Internet Archive can be intermittently unreachable from CI.
+# Skip checking known-good Wayback snapshots to avoid flaky builds.
+skip_prefixes = [
+  "https://web.archive.org/web/20171107000548/https://vimeo.com/157530322",
+  "https://web.archive.org/web/20171107000550/https://vimeo.com/162142298",
+]
+
 # Feeds
 generate_feed = true
 feed_filename = "rss.xml"
@@ -49,8 +56,11 @@ galleria.enabled = false
 
 navbar_items = [
   { code = "en", nav_items = [
+    { url = "/about", name = "About" },
     { url = "/", name = "Home" },
+    { url = "/papers", name = "Papers" },
     { url = "/posts", name = "Posts" },
+    { url = "/projects", name = "Projects" },
     { url = "/tags", name = "Tags" },
   ] },
 ]

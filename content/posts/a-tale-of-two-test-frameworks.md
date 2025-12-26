@@ -4,7 +4,7 @@ date = 2022-05-20T12:57:43-07:00
 draft = false
 
 [taxonomies]
-tags = ["cpp", "testing", "googletest", "catch2", "doctest"]
+tags = ["catch2", "cpp", "doctest", "googletest", "testing"]
 +++
 
 As I've mentioned earlier, I'm writing some [scientific code][1] that needs to be accurate and fast.

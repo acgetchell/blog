@@ -225,7 +225,7 @@ triangulations, indeed occurs.
 [mcmc]: https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo
 [ergodic moves]: http://www.sciencedirect.com/science/article/pii/055032139290012Z
 [delaunay]: https://en.wikipedia.org/wiki/Delaunay_triangulation
-[regge]: http://link.springer.com/article/10.1007/BF02733251
+[regge]: https://link.springer.com/article/10.1007/BF02733251
 [newtonian-limit]: http://www.slideshare.net/acgetchell/aps-48348528
 [CGAL]: https://github.com/CGAL/cgal
 [swig]: https://github.com/CGAL/cgal-swig-bindings

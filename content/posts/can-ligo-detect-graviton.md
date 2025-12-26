@@ -88,7 +88,7 @@ neutrinos.
 
 Special thanks to [KaTeX] for rendering the math on this site.[^1]
 
-*N.B. There's a good [followup
+*N.B. There's a good [follow-up
 post](https://web.archive.org/web/20090708032512/http://blogs.discovermagazine.com:80/cosmicvariance/2009/07/05/catching-the-waves/)
 on [Cosmic Variance](https://web.archive.org/web/20191120024349/http://blogs.discovermagazine.com/cosmicvariance/),
 along with an [earlier

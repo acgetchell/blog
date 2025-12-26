@@ -41,7 +41,7 @@ Homebrew LLVM version 13.0.1
   Host CPU: cyclone
 ```
 
-(*Full output [here][4]:*)
+(*Full [doctest clang-tidy output][4]:*)
 
 ```bash
 adam@hapkido ~/projects/CDT-plusplus (develop) $ git checkout feature/doctest

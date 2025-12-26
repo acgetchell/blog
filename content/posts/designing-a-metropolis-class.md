@@ -96,25 +96,14 @@ The CDT action is then based on the Regge action:
 
 $$
 \begin{aligned}
-S^{(3)} &= 2\pi k\sqrt{\alpha}N_1^{TL} \\
-&\quad + N_3^{(3,1)}\left[
-\begin{array}{l}
--3k\text{arcsinh}\left(\frac{1}{\sqrt{3}\sqrt{4\alpha+1}}\right) \\
--3k\sqrt{\alpha}\text{arccos}\left(\frac{2\alpha+1}{4\alpha+1}\right) \\
--\frac{\lambda}{12}\sqrt{3\alpha+1}
-\end{array}
-\right] \\
+S^{(3)} &= 2\pi k\sqrt{\alpha}N_1^{TL} + N_3^{(3,1)}\left[
+-3k\operatorname{arcsinh}\left(\frac{1}{\sqrt{3}\sqrt{4\alpha+1}}\right)
+-3k\sqrt{\alpha}\operatorname{arccos}\left(\frac{2\alpha+1}{4\alpha+1}\right)
+-\frac{\lambda}{12}\sqrt{3\alpha+1}\right] \\
 &\quad + N_3^{(2,2)}\left[
-\begin{array}{l}
-2k\text{arcsinh}\!\left( \\
-\qquad \frac{2\sqrt{4\alpha+2}}{4\alpha+1} \\
-\right) \\
--4k\sqrt{\alpha}\text{arccos}\!\left( \\
-\qquad -\frac{1}{4\alpha+1} \\
-\right) \\
--\frac{\lambda}{12}\sqrt{4\alpha+2}
-\end{array}
-\right]
+2k\operatorname{arcsinh}\left(\frac{2\sqrt{4\alpha+2}}{4\alpha+1}\right)
+-4k\sqrt{\alpha}\operatorname{arccos}\left(-\frac{1}{4\alpha+1}\right)
+-\frac{\lambda}{12}\sqrt{4\alpha+2}\right]
 \end{aligned}
 $$
 

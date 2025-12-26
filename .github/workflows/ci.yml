@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches-ignore:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: >
+    ci-${{ github.workflow }}-${{
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.number ||
+      github.ref
+    }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8  # v6.0.1
+        with:
+          submodules: recursive
+
+      - name: Run CI checks
+        uses: ./.github/actions/run-just-ci

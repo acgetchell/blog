@@ -1,0 +1,36 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8  # v6.0.1
+        with:
+          submodules: recursive
+
+      - name: Run CI checks
+        uses: ./.github/actions/run-just-ci
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e  # v4.0.0 (tag is annotated; tag object 47f197a2200b...)
+        with:
+          personal_token: ${{ secrets.TOKEN }}
+          external_repository: acgetchell/acgetchell.github.io
+          publish_branch: main
+          publish_dir: ./public
+          user_name: acgetchell
+          user_email: adam@adamgetchell.org
+          cname: www.adamgetchell.org

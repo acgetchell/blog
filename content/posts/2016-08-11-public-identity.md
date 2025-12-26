@@ -1,10 +1,11 @@
----
-Title: Secure, Verifiable, Public Identity
-date: 2016-08-12
-lastmod: 2016-08-15
-Category: Misc
-<!-- Tags: prismbreak, keybase, protonmail, joker, cloudflare, github -->
----
++++
+title = "Secure, Verifiable, Public Identity"
+date = 2016-08-12
+updated = 2016-08-15
+
+[taxonomies]
+tags = ["cloudflare", "github", "joker", "keybase", "prismbreak", "protonmail", "security"]
++++
 
 For awhile, I've been interested in establishing a secure, verifiable, public
 identity.
@@ -102,8 +103,8 @@ Now, back to email! Just like we don't want someone to spoof our domain, we
 don't want to someone to spoof emails. Time for [DKIM][9], [SPF][10], and
 [DMARC][11].
 
-ProtonMail has a fantastic guide to setting up [Anti-spoofing for Custom
-Domains][8]. Again, I'll wait while you read it.
+ProtonMail provides guides for setting up anti-spoofing for custom domains,
+including configuring DKIM, SPF, and DMARC records.
 
 Whew! That was a long detour, but we finally have a secure email address to use
 for [Keybase][1].
@@ -166,24 +167,22 @@ Here are two videos from CloudFlare on boosting site speed and security:
 - [Increase the speed of your site - CloudFlare Performance Tips][27]
 - [User Privacy & Data Integrity][28]
 
-
 [1]: https://keybase.io/docs/kbfs
 [2]: https://keybase.io/adamgetchell
-[3]: https://protonmail.com
+[3]: https://proton.me
 [4]: https://adamgetchell.org
 [5]: https://joker.com
-[6]: http://dnssec.net
+[6]: https://grokipedia.com/page/Domain_Name_System_Security_Extensions
 [7]: https://www.cloudflare.com
-[8]: https://protonmail.com/support/knowledge-base/anti-spoofing/
-[9]: http://www.dkim.org
-[10]: http://www.openspf.org
-[11]: https://dmarc.org
+[9]: https://www.rfc-editor.org/rfc/rfc6376
+[10]: https://www.rfc-editor.org/rfc/rfc7208
+[11]: https://en.wikipedia.org/wiki/DMARC
 [12]: https://1password.com
-[13]: https://konklone.com/post/github-pages-now-sorta-supports-https-so-use-it
+[13]: https://help.github.com/articles/securing-your-github-pages-site-with-https/
 [14]: https://en.internet.nl
 [15]: https://keybase.io/blog/2014-10-08/the-horror-of-a-secure-golden-key
 [16]: http://www.zdnet.com/article/microsoft-secure-boot-key-debacle-causes-security-panic/
-[17]: https://docs.menandmice.com/display/MM/How+to+test+DNSSEC+validation
+[17]: https://web.archive.org/web/20190128075300/https://docs.menandmice.com/display/MM/How+to+test+DNSSEC+validation
 [18]: https://thehackerblog.com/keeping-positive-obtaining-arbitrary-wildcard-ssl-certificates-from-comodo-via-dangling-markup-injection/index.html
 [19]: https://www.youtube.com/watch?v=pDmj_xe7EIQ
 [20]: http://security.stackexchange.com/questions/6730/what-is-the-difference-between-authenticity-and-non-repudiation
@@ -193,6 +192,6 @@ Here are two videos from CloudFlare on boosting site speed and security:
 [24]: https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet
 [25]: http://www.howtogeek.com/180604/htg-explains-why-is-spam-still-a-problem/
 [26]: http://www.wired.com/2015/03/ugly-mail/
-[27]: https://vimeo.com/157530322
-[28]: https://vimeo.com/162142298
+[27]: https://web.archive.org/web/20171107000548/https://vimeo.com/157530322
+[28]: https://web.archive.org/web/20171107000550/https://vimeo.com/162142298
 [29]: https://gist.github.com/acgetchell/7b68d1168a45859624d0cb3369931ace

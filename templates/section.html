@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ config.title }} | {{ section.title }}
+{% endblock title %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="has-text-centered">
+      <h1 class="title is-2">{{ section.title }}</h1>
+      <p class="subtitle is-4">{{ section.description }}</p>
+    </div>
+    <div class="content">
+      {{ section.content | safe }}
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-9">
+        {% if paginator %}
+        {% set pages = paginator.pages %}
+        {% else %}
+        {% set pages = section.pages %}
+        {% endif %}
+
+        {% for page in pages %}
+        <article class="box">
+          <h2 class="title">
+            <a class="has-text-dark" href='{{ page.permalink }}'>
+              {{ page.title }}
+            </a>
+          </h2>
+          <p class="subtitle">{{ page.description }}</p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              {{ macros::page_publish_metadata(page=page) }}
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              {{ macros::page_content_metadata(page=page) }}
+            </div>
+          </div>
+          <div class="content mt-2">
+            {{ page.summary | safe }}
+            <a class="has-text-danger-dark has-text-weight-semibold" href='{{ page.permalink }}' aria-label='Read more about {{ page.title }}'>
+              Read More
+              <span class="icon is-small">
+                <i class="fas fa-arrow-right fa-xs"></i>
+              </span>
+            </a>
+          </div>
+          {% if page.taxonomies.tags %}
+          <div class="columns">
+            <div class="column has-text-right-desktop">
+              {{ macros::render_tags(tags=page.taxonomies.tags) }}
+            </div>
+          </div>
+          {% endif %}
+        </article>
+        {% else %}
+        <div class="box has-text-centered">
+          <p>No pages found in this section.</p>
+        </div>
+        {% endfor %}
+
+        {% if paginator %}
+        <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+          {% if paginator.previous %}
+          <a class="pagination-previous" href="{{ paginator.previous }}">Previous</a>
+          {% else %}
+          <span class="pagination-previous" disabled>Previous</span>
+          {% endif %}
+
+          {% if paginator.next %}
+          <a class="pagination-next" href="{{ paginator.next }}">Next</a>
+          {% else %}
+          <span class="pagination-next" disabled>Next</span>
+          {% endif %}
+        </nav>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

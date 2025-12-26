@@ -1,8 +1,11 @@
----
-title: "A Tale of Two Test Frameworks"
-date: 2022-05-20T12:57:43-07:00
-draft: false
----
++++
+title = "A Tale of Two Test Frameworks"
+date = 2022-05-20T12:57:43-07:00
+draft = false
+
+[taxonomies]
+tags = ["catch2", "cpp", "doctest", "googletest", "testing"]
++++
 
 As I've mentioned earlier, I'm writing some [scientific code][1] that needs to be accurate and fast.
 
@@ -38,7 +41,7 @@ Homebrew LLVM version 13.0.1
   Host CPU: cyclone
 ```
 
-(*Full output [here][4]:*)
+(*Full [doctest clang-tidy output][4]:*)
 
 ```bash
 adam@hapkido ~/projects/CDT-plusplus (develop) $ git checkout feature/doctest
@@ -137,15 +140,15 @@ a package manager like [vcpkg] to handle it sanely.
 [Catch2]: https://github.com/catchorg/Catch2
 [doctest]: https://github.com/doctest/doctest
 [2]: https://github.com/doctest/doctest/blob/master/doc/markdown/benchmarks.md
-[3]: https://github.com/catchorg/Catch2/blob/devel/docs/release-notes.md#301
+[3]: https://github.com/catchorg/Catch2/blob/devel/docs/release-notes.md
 [4]: https://gist.github.com/acgetchell/b1931e063ddfde033dd5702ee42d632f#file-doctest-clang-tidy
 [clang-tidy]: https://releases.llvm.org/13.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
 [PVS-Studio]: https://pvs-studio.com/en/
 [features/catch2v3]: https://github.com/acgetchell/CDT-plusplus/tree/feature/catch2v3
 [features/doctest]: https://github.com/acgetchell/CDT-plusplus/tree/feature/doctest
-[CGAL]: https://www.cgal.org
+[CGAL]: https://github.com/CGAL/cgal
 [Boost]: https://www.boost.org
-[Eigen]: https://eigen.tuxfamily.org/index.php?title=Main_Page
+[Eigen]: https://eigen.tuxfamily.org/
 [vcpkg]: https://vcpkg.io/en/index.html
 [gcc]: https://gcc.gnu.org
 [Twitter Poll]: https://twitter.com/adamgetchell/status/1528791092748906496

@@ -1,9 +1,13 @@
----
-title: "Designing a Metropolis Class"
-date: 2020-01-30T00:39:09-08:00
-draft: false
----
-[Causal Dynamical Triangulations][1] computes the path integral of the
++++
+title = "Designing a Metropolis Class"
+date = 2020-01-30T00:39:09-08:00
+draft = false
+
+[taxonomies]
+tags = ["cdt","cgal", "delaunay", "mcmc", "metropolis-hastings", "monte-carlo", "physics"]
++++
+
+[Causal Dynamical Triangulations] computes the path integral of the
 quantum universe numerically.[^1]
 
 $$I_{EH}=\int\mathcal{D}[g(M)]e^{iS_{EH}} \rightarrow  \sum \frac{1}{C_t}e^{-S_{R}}$$
@@ -12,10 +16,10 @@ Where $S_{EH}$ is the Einstein-Hilbert action:
 
 $$S_{EH}=\int \left[\frac{1}{2\kappa}(R-2\Lambda)+\mathcal{L}_{M}\right]\sqrt{-g}d^4x$$
 
- And $S_{R}$ is the Regge action:
+And $S_{R}$ is the Regge action:
 
- $$S_{R}=\frac{1}{8\pi G}
- \left[\sum_{hinges}A_i\delta_i+\Lambda\sum_{simplices}V_i\right]$$
+$$S_{R}=\\frac{1}{8\\pi G}
+\\left[\\sum_{hinges}A_i\\delta_i+\\Lambda\\sum_{simplices}V_i\\right]$$
 
 > What is a path integral and why would I want to compute it?
 
@@ -25,7 +29,7 @@ the assumption that it's something we want to compute.
 
 To do this we use the [Metropolis-Hastings] algorithm, which is a
 member of a more general class of algorithms known as
-[Markov Chain Monte Carlo (MCMC)][3] methods, in particular random walk
+[Markov Chain Monte Carlo (MCMC)][mcmc] methods, in particular random walk
 Monte Carlo methods.
 
 > Is this another long digression?
@@ -37,9 +41,9 @@ perturbations of that universe via [ergodic moves], performed millions of
 times per simulation accurately.[^2]
 
 The simulated universe in general is an n-dimensional
-[Delaunay Triangulation][5], which is a good[^5] discretized n-dimensional
+[Delaunay Triangulation][delaunay], which is a good[^5] discretized n-dimensional
 manifold, which allows us to do [Regge calculus], or
-["General Relativity without Coordinates"][6], conducted on said
+["General Relativity without Coordinates"][regge], conducted on said
 triangulations.
 
 Here is what these ergodic moves look like in 3D. By choosing to make these
@@ -60,7 +64,7 @@ discretized universes.
 > So how do we use these moves?
 
 First, let's start by generating a random, foliated triangulation with $n$
-simplices and $t$ timeslices. [Here is a program to do that][12].
+simplices and $t$ timeslices. [Here is a program to do that][initialize].
 
 A foliated triangulation is a Delaunay triangulation with two criteria:
 
@@ -74,10 +78,10 @@ We can thus classify the
 (2+1) dimensional simplex as a (3,1) simplex (_3 vertices on the low timeslice
 and one vertex on the high timeslice_), a (2,2) simplex, or a (1,3) simplex.
 
-Likewise, we can name the moves similiarly.
+Likewise, we can name the moves similarly.
 
 The top move takes a (3,1) simplex and a (2,2) simplex and converts it to a
-(3,1) simplex plus two (2,2) simplices. This is called a (2,3) move, and it's
+(3,1) simplex plus two (2,2) simplices. This is called a (2,3) move, and its
 reverse is naturally a (3,2) move.
 
 The middle move takes a (1,3) simplex and a (3,1) simplex and converts it to
@@ -86,11 +90,22 @@ with the reverse (6,2) move.
 
 The bottom move takes two (1,3) simplices and two (3,1) simplices and makes
 different (1,3) and (3,1) simplices. This is called a (4,4) move, and it is
-it's own reverse.
+its own reverse.
 
 The CDT action is then based on the Regge action:
 
-$$S^{(3)} = 2\pi k\sqrt{\alpha}N_1^{TL} + N_3^{(3,1)}\left[-3k\text{arcsinh}\left(\frac{1}{\sqrt{3}\sqrt{4\alpha+1}}\right)-3k\sqrt{\alpha}\text{arccos}\left(\frac{2\alpha+1}{4\alpha+1}\right)-\frac{\lambda}{12}\sqrt{3\alpha+1}\right] + N_3^{(2,2)}\left[2k\text{arcsinh}\left(\frac{2\sqrt{2}\sqrt{2\alpha+1}}{4\alpha+1}\right)-4k\sqrt{\alpha}\text{arccos}\left(\frac{-1}{4\alpha+1}\right)-\frac{\lambda}{12}\sqrt{4\alpha+2}\right] $$
+$$
+\begin{aligned}
+S^{(3)} &= 2\pi k\sqrt{\alpha}N_1^{TL} + N_3^{(3,1)}\left[
+-3k\operatorname{arcsinh}\left(\frac{1}{\sqrt{3}\sqrt{4\alpha+1}}\right)
+-3k\sqrt{\alpha}\operatorname{arccos}\left(\frac{2\alpha+1}{4\alpha+1}\right)
+-\frac{\lambda}{12}\sqrt{3\alpha+1}\right] \\
+&\quad + N_3^{(2,2)}\left[
+2k\operatorname{arcsinh}\left(\frac{2\sqrt{4\alpha+2}}{4\alpha+1}\right)
+-4k\sqrt{\alpha}\operatorname{arccos}\left(-\frac{1}{4\alpha+1}\right)
+-\frac{\lambda}{12}\sqrt{4\alpha+2}\right]
+\end{aligned}
+$$
 
 This formula is the Regge action with some trigonometric identities applied
 after taking the length of spacelike edges to be 1 and the length of timelike
@@ -141,8 +156,8 @@ producing an [ensemble].
 > Now what?
 
 Now we can collect data on the various ensembles, and obtain things like
-[spectral dimension][11], [transition amplitudes][10], or in my case, the
-[Newtonian Limit][7].
+[spectral dimension], [transition amplitudes], or in my case, the
+[Newtonian Limit][newtonian-limit].
 
 So that's the backstory (_modulo some digressions_).
 
@@ -164,6 +179,8 @@ We'll get into that next time!
 > You didn't actually address the title of this post.
 
 I do need to sleep sometime.
+
+> Fair enough.
 
 [^1]: A [Wick rotation] converts the factor of $i$ in the continuous path
 integral to a minus sign in the discrete path integral. In the Einstein-Hilbert
@@ -187,7 +204,7 @@ and [Python]. I quickly came to the realization that implementing [Delaunay
 Triangulations][5] and the necessary operations was several PhDs worth
 of research in its own right (_which, in fact, [CGAL] is_). The choice of [CGAL]
 influenced the choice of language; [Python] almost worked, but the
-[SWIG Python bindings][9] weren't up to the task at the time. (_They still lack
+[SWIG Python bindings][swig] weren't up to the task at the time. (_They still lack
 access to the new dD Triangulation package, which I will need for (3+1)D
 path integrals._)
 
@@ -203,17 +220,17 @@ badly (_gets stuck_) if the acceptance ratio of moves is below ~25%.
 Alternatives are needed if this is the case, which, for sufficiently large
 triangulations, indeed occurs.
 
-[1]: http://arxiv.org/abs/hep-th/0105267
-[Metropolis-Hastings]: http://thy.phy.bnl.gov/~creutz/mypubs/pub044.pdf
-[3]: https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo
+[Causal Dynamical Triangulations]: http://arxiv.org/abs/hep-th/0105267
+[Metropolis-Hastings]: https://grokipedia.com/page/Metropolis%E2%80%93Hastings_algorithm
+[mcmc]: https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo
 [ergodic moves]: http://www.sciencedirect.com/science/article/pii/055032139290012Z
-[5]: http://www.mathworks.com/help/matlab/math/delaunay-triangulation.html
-[6]: http://link.springer.com/article/10.1007/BF02733251
-[7]: http://www.slideshare.net/acgetchell/aps-48348528
-[CGAL]: https://www.cgal.org/
-[9]: https://github.com/CGAL/cgal-swig-bindings
-[10]: http://arxiv.org/abs/1305.2932
-[11]: http://arxiv.org/abs/hep-th/0505113
+[delaunay]: https://en.wikipedia.org/wiki/Delaunay_triangulation
+[regge]: http://link.springer.com/article/10.1007/BF02733251
+[newtonian-limit]: http://www.slideshare.net/acgetchell/aps-48348528
+[CGAL]: https://github.com/CGAL/cgal
+[swig]: https://github.com/CGAL/cgal-swig-bindings
+[transition amplitudes]: http://arxiv.org/abs/1305.2932
+[spectral dimension]: http://arxiv.org/abs/hep-th/0505113
 [Wick rotation]: https://en.wikipedia.org/wiki/Wick_rotation
 [Lagrangian]: https://en.wikipedia.org/wiki/Lagrangian_(field_theory)
 [posterior]: https://en.wikipedia.org/wiki/Posterior_probability
@@ -227,5 +244,5 @@ triangulations, indeed occurs.
 [Strategy Pattern]: https://sourcemaking.com/design_patterns/strategy
 [GoF]: https://en.wikipedia.org/wiki/Design_Patterns
 [functional programming]: https://www.manning.com/books/functional-programming-in-c-plus-plus
-[12]: https://github.com/acgetchell/CDT-plusplus/blob/develop/src/initialize.cpp
+[initialize]: https://github.com/acgetchell/CDT-plusplus/blob/develop/src/initialize.cpp
 [ensemble]: https://en.m.wikipedia.org/wiki/Statistical_ensemble_(mathematical_physics)

@@ -1,8 +1,11 @@
----
-title: "Can LIGO Detect A Graviton?"
-date: 2011-12-28T17:51:16-08:00
-draft: false
----
++++
+title = "Can LIGO Detect A Graviton?"
+date = 2011-12-28T17:51:16-08:00
+draft = false
+
+[taxonomies]
+tags = ["gravitational-waves", "graviton", "ligo", "physics"]
++++
 *A lecture given 10/27/08 by Professor Freeman Dyson of the Institute of
 Advanced Studies at Princeton, in honor of the 100th anniversary of the
 founding of the University of California, Davis.*
@@ -83,22 +86,12 @@ From the Sun, there are $10^{8}$W of gravitons and $10^{25}$W of
 neutrinos, and we can detect gravitons about $10^{-35}$ less than
 neutrinos.  
 
-Special thanks to
-[MathJAX](http://www.mathjax.org/) and these posts on how to use [MathJax
-in
-Hugo](https://github.com/budparr/gohugo-theme-ananke/issues/129)![^1]
+Special thanks to [KaTeX] for rendering the math on this site.[^1]
 
-*N.B. There's a good [followup
-post](http://blogs.discovermagazine.com/cosmicvariance/2009/07/05/catching-the-waves/)
-on [Cosmic Variance](http://blogs.discovermagazine.com/cosmicvariance/),
-along with an [earlier
-entry](http://blogs.discovermagazine.com/cosmicvariance/2007/04/25/the-difficult-childhood-of-gravitational-waves/)
-giving some good background information.*
+*N.B. There were good follow-up posts on the now-defunct Cosmic Variance blog (formerly at Discover Magazine) that provided background information on gravitational waves, including "Catching the Waves" (2009) and "The Difficult Childhood of Gravitational Waves" (2007).*
 
-[^1]: This doesn't work anymore, as recent [Hugo]/[Ananke] updates changed [MathJax]/[LaTeX] integration. See [here][1] for the fix.
+[^1]: This site is built with [Zola] (theme: DeepThought) and uses [KaTeX] auto-render for [LaTeX]-style math.
 
-[Hugo]:  https://gohugo.io
-[Ananke]: https://github.com/theNewDynamic/gohugo-theme-ananke
-[MathJax]: https://www.mathjax.org
+[Zola]: https://www.getzola.org
+[KaTeX]: https://katex.org
 [LaTeX]: https://www.latex-project.org
-[1]: https://discourse.gohugo.io/t/what-is-the-canonical-way-to-enable-latex/38721/3

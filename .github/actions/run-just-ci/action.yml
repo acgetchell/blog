@@ -31,6 +31,16 @@ runs:
           -o /tmp/actionlint.tar.gz \
           "https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}/actionlint_${ACTIONLINT_VERSION}_linux_${ACTIONLINT_ARCH}.tar.gz"
 
+        # Verify checksum for integrity
+        case "${ACTIONLINT_ARCH}" in
+          amd64)
+            echo "233b280d05e100837f4af1433c7b40a5dcb306e3aa68fb4f17f8a7f45a7df7b4  /tmp/actionlint.tar.gz" | sha256sum -c -
+            ;;
+          arm64)
+            echo "6b82a3b8c808bf1bcd39a95aced22fc1a026eef08ede410f81e274af8deadbbc  /tmp/actionlint.tar.gz" | sha256sum -c -
+            ;;
+        esac
+
         tar -xzf /tmp/actionlint.tar.gz -C /tmp actionlint
         sudo install -m 0755 /tmp/actionlint /usr/local/bin/actionlint
         actionlint -version

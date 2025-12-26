@@ -16,29 +16,29 @@ function debounce(func, wait) {
 }
 
 function makeTeaser(body, terms) {
-  var TERM_WEIGHT = 40;
-  var NORMAL_WORD_WEIGHT = 2;
-  var FIRST_WORD_WEIGHT = 8;
-  var TEASER_MAX_WORDS = 10;
+  const TERM_WEIGHT = 40;
+  const NORMAL_WORD_WEIGHT = 2;
+  const FIRST_WORD_WEIGHT = 8;
+  const TEASER_MAX_WORDS = 10;
 
-  var stemmedTerms = terms.map(function (w) {
+  const stemmedTerms = terms.map(function (w) {
     return elasticlunr.stemmer(w.toLowerCase());
   });
-  var termFound = false;
-  var index = 0;
-  var weighted = [];
+  let termFound = false;
+  let index = 0;
+  const weighted = [];
 
-  var sentences = body.toLowerCase().split(". ");
+  const sentences = body.toLowerCase().split(". ");
 
-  for (var i in sentences) {
-    var words = sentences[i].split(" ");
-    var value = FIRST_WORD_WEIGHT;
+  for (let i = 0; i < sentences.length; i++) {
+    const words = sentences[i].split(" ");
+    let value = FIRST_WORD_WEIGHT;
 
-    for (var j in words) {
-      var word = words[j];
+    for (let j = 0; j < words.length; j++) {
+      const word = words[j];
 
       if (word.length > 0) {
-        for (var k in stemmedTerms) {
+        for (let k = 0; k < stemmedTerms.length; k++) {
           if (elasticlunr.stemmer(word).startsWith(stemmedTerms[k])) {
             value = TERM_WEIGHT;
             termFound = true;
@@ -59,25 +59,25 @@ function makeTeaser(body, terms) {
     return body;
   }
 
-  var windowWeights = [];
-  var windowSize = Math.min(weighted.length, TEASER_MAX_WORDS);
+  const windowWeights = [];
+  const windowSize = Math.min(weighted.length, TEASER_MAX_WORDS);
 
-  var curSum = 0;
-  for (var i = 0; i < windowSize; i++) {
+  let curSum = 0;
+  for (let i = 0; i < windowSize; i++) {
     curSum += weighted[i][1];
   }
   windowWeights.push(curSum);
 
-  for (var i = 0; i < weighted.length - windowSize; i++) {
+  for (let i = 0; i < weighted.length - windowSize; i++) {
     curSum -= weighted[i][1];
     curSum += weighted[i + windowSize][1];
     windowWeights.push(curSum);
   }
 
-  var maxSumIndex = 0;
+  let maxSumIndex = 0;
   if (termFound) {
-    var maxFound = 0;
-    for (var i = windowWeights.length - 1; i >= 0; i--) {
+    let maxFound = 0;
+    for (let i = windowWeights.length - 1; i >= 0; i--) {
       if (windowWeights[i] > maxFound) {
         maxFound = windowWeights[i];
         maxSumIndex = i;
@@ -85,10 +85,10 @@ function makeTeaser(body, terms) {
     }
   }
 
-  var teaser = [];
-  var startIndex = weighted[maxSumIndex][2];
-  for (var i = maxSumIndex; i < maxSumIndex + windowSize; i++) {
-    var word = weighted[i];
+  const teaser = [];
+  let startIndex = weighted[maxSumIndex][2];
+  for (let i = maxSumIndex; i < maxSumIndex + windowSize; i++) {
+    const word = weighted[i];
     if (startIndex < word[2]) {
       teaser.push(body.substring(startIndex, word[2]));
       startIndex = word[2];
@@ -112,7 +112,7 @@ function formatSearchResultItem(item, terms) {
   return (
     `<article class='box'>` +
     `<h1 class='title'>` +
-    `<a class='link' class='link' href='${item.ref}'>${item.doc.title}</a>` +
+    `<a class='link' href='${item.ref}'>${item.doc.title}</a>` +
     `</h1>` +
     `<div class='content mt-2'>` +
     `${makeTeaser(item.doc.body, terms)}` +
@@ -125,25 +125,37 @@ function formatSearchResultItem(item, terms) {
 }
 
 function search() {
-  var $searchInput = document.getElementById("search");
-  var $searchResults = document.querySelector(".search-results");
-  var $searchResultsItems = document.querySelector(".search-results__items");
-  var MAX_ITEMS = 10;
+  const $searchInput = document.getElementById("search");
+  const $searchResults = document.querySelector(".search-results");
+  const $searchResultsItems = document.querySelector(".search-results__items");
+  
+  if (!$searchInput || !$searchResults || !$searchResultsItems) {
+    console.warn("Search elements not found");
+    return;
+  }
+  
+  const MAX_ITEMS = 10;
 
-  var options = {
+  const options = {
     bool: "AND",
     fields: {
       title: { boost: 2 },
       body: { boost: 1 },
     },
   };
-  var currentTerm = "";
-  var index = elasticlunr.Index.load(window.searchIndex);
+  let currentTerm = "";
+  
+  if (!window.searchIndex) {
+    console.warn("Search index not loaded");
+    return;
+  }
+  
+  const index = elasticlunr.Index.load(window.searchIndex);
 
   $searchInput.addEventListener(
     "keyup",
     debounce(function () {
-      var term = $searchInput.value.trim();
+      const term = $searchInput.value.trim();
       if (term === currentTerm || !index) {
         return;
       }
@@ -153,15 +165,15 @@ function search() {
         return;
       }
 
-      var results = index.search(term, options);
+      const results = index.search(term, options);
       if (results.length === 0) {
         $searchResults.style.display = "none";
         return;
       }
 
       currentTerm = term;
-      for (var i = 0; i < Math.min(results.length, MAX_ITEMS); i++) {
-        var item = document.createElement("div");
+      for (let i = 0; i < Math.min(results.length, MAX_ITEMS); i++) {
+        const item = document.createElement("div");
         item.classList.add("mb-4");
         item.innerHTML = formatSearchResultItem(results[i], term.split(" "));
         $searchResultsItems.appendChild(item);
@@ -176,13 +188,20 @@ function documentReadyCallback() {
     document.body.setAttribute("theme", "dark");
     document.querySelectorAll("img, picture, video, pre").forEach(img => img.setAttribute("theme", "dark"));
     document.querySelectorAll(".vimeo, .youtube, .chart").forEach(video => video.setAttribute("theme", "dark"));
-    document.getElementById("dark-mode").setAttribute("title", "Switch to light theme");
+    const darkModeEl = document.getElementById("dark-mode");
+    if (darkModeEl) {
+      darkModeEl.setAttribute("title", "Switch to light theme");
+    }
   }
 
-  document.querySelector(".navbar-burger").addEventListener("click", () => {
-    document.querySelector(".navbar-burger").classList.toggle("is-active");
-    document.querySelector(".navbar-menu").classList.toggle("is-active");
-  });
+  const navbarBurger = document.querySelector(".navbar-burger");
+  const navbarMenu = document.querySelector(".navbar-menu");
+  if (navbarBurger && navbarMenu) {
+    navbarBurger.addEventListener("click", () => {
+      navbarBurger.classList.toggle("is-active");
+      navbarMenu.classList.toggle("is-active");
+    });
+  }
 
   document.querySelectorAll("div.navbar-end > a.navbar-item").forEach((el) => {
     const href = el.getAttribute("href");
@@ -204,49 +223,65 @@ function documentReadyCallback() {
     }
   })
 
-  document.getElementById("nav-search").addEventListener("click", (evt) => {
-    //let target = evt.currentTarget.getAttribute("data-target");
-    document.querySelector("html").classList.add("is-clipped");
-    document.getElementById("search-modal").classList.add("is-active");
+  const navSearch = document.getElementById("nav-search");
+  const searchModal = document.getElementById("search-modal");
+  const searchInput = document.getElementById("search");
+  if (navSearch && searchModal && searchInput) {
+    navSearch.addEventListener("click", (evt) => {
+      document.querySelector("html").classList.add("is-clipped");
+      searchModal.classList.add("is-active");
 
-    document.getElementById("search").focus();
-    document.getElementById("search").select();
-  });
+      searchInput.focus();
+      searchInput.select();
+    });
+  }
 
-  document.querySelector(".modal-close").addEventListener("click", (evt) => {
-    document.querySelector("html").classList.remove("is-clipped");
-    evt.currentTarget.parentElement.classList.remove("is-active");
-  });
+  const modalClose = document.querySelector(".modal-close");
+  if (modalClose) {
+    modalClose.addEventListener("click", (evt) => {
+      document.querySelector("html").classList.remove("is-clipped");
+      evt.currentTarget.parentElement.classList.remove("is-active");
+    });
+  }
 
-  document.querySelector(".modal-background").addEventListener("click", (evt) => {
-    document.querySelector("html").classList.remove("is-clipped");
-    evt.currentTarget.parentElement.classList.remove("is-active");
-  });
+  const modalBackground = document.querySelector(".modal-background");
+  if (modalBackground) {
+    modalBackground.addEventListener("click", (evt) => {
+      document.querySelector("html").classList.remove("is-clipped");
+      evt.currentTarget.parentElement.classList.remove("is-active");
+    });
+  }
 
-  document.getElementById("search").addEventListener("keyup", () => {
-    search();
-  });
+  const searchEl = document.getElementById("search");
+  if (searchEl) {
+    searchEl.addEventListener("keyup", () => {
+      search();
+    });
+  }
 
-  document.getElementById("dark-mode").addEventListener("click", () => {
-    if (
-      localStorage.getItem("theme") == null ||
-      localStorage.getItem("theme") == "light"
-    ) {
-      localStorage.setItem("theme", "dark");
-      document.body.setAttribute("theme", "dark");
-      document.querySelectorAll("img, picture, video, pre").forEach(img => img.setAttribute("theme", "dark"));
-      document.querySelectorAll(".vimeo, .youtube, .chart").forEach(video => video.setAttribute("theme", "dark"));
+  const darkModeToggle = document.getElementById("dark-mode");
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener("click", () => {
+      if (
+        localStorage.getItem("theme") == null ||
+        localStorage.getItem("theme") == "light"
+      ) {
+        localStorage.setItem("theme", "dark");
+        document.body.setAttribute("theme", "dark");
+        document.querySelectorAll("img, picture, video, pre").forEach(img => img.setAttribute("theme", "dark"));
+        document.querySelectorAll(".vimeo, .youtube, .chart").forEach(video => video.setAttribute("theme", "dark"));
 
-      document.getElementById("dark-mode").setAttribute("title", "Switch to light theme");
-    } else {
-      localStorage.setItem("theme", "light");
-      document.body.removeAttribute("theme", "dark");
-      document.querySelectorAll("img, picture, video, pre").forEach(img => img.removeAttribute("theme", "dark"))
-      document.querySelectorAll(".vimeo, .youtube, .chart").forEach(video => video.removeAttribute("theme", "dark"));
+        darkModeToggle.setAttribute("title", "Switch to light theme");
+      } else {
+        localStorage.setItem("theme", "light");
+        document.body.removeAttribute("theme");
+        document.querySelectorAll("img, picture, video, pre").forEach(img => img.removeAttribute("theme"));
+        document.querySelectorAll(".vimeo, .youtube, .chart").forEach(video => video.removeAttribute("theme"));
 
-      document.getElementById("dark-mode").setAttribute("title", "Switch to dark theme");
-    }
-  });
+        darkModeToggle.setAttribute("title", "Switch to dark theme");
+      }
+    });
+  }
 
   if (typeof mermaid !== "undefined") {
     mermaid.initialize({ startOnLoad: true });

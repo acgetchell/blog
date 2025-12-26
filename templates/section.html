@@ -40,7 +40,7 @@
           </div>
           <div class="content mt-2">
             {{ page.summary | safe }}
-            <a class="has-text-danger-dark has-text-weight-semibold" href='{{ page.permalink }}'>
+            <a class="has-text-danger-dark has-text-weight-semibold" href='{{ page.permalink }}' aria-label='Read more about {{ page.title }}'>
               Read More
               <span class="icon is-small">
                 <i class="fas fa-arrow-right fa-xs"></i>
@@ -66,13 +66,13 @@
           {% if paginator.previous %}
           <a class="pagination-previous" href="{{ paginator.previous }}">Previous</a>
           {% else %}
-          <a class="pagination-previous" aria-disabled="true" tabindex="-1">Previous</a>
+          <span class="pagination-previous" disabled>Previous</span>
           {% endif %}
 
           {% if paginator.next %}
           <a class="pagination-next" href="{{ paginator.next }}">Next</a>
           {% else %}
-          <a class="pagination-next" aria-disabled="true" tabindex="-1">Next</a>
+          <span class="pagination-next" disabled>Next</span>
           {% endif %}
         </nav>
         {% endif %}

@@ -158,13 +158,13 @@
   <section class="section">
     <div class="container">
       <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <a class="pagination-previous" href='{{ paginator.previous }}' {% if not paginator.previous %}disabled{% endif %}>
+        <a class="pagination-previous" {% if paginator.previous %}href='{{ paginator.previous }}'{% else %}aria-disabled="true" tabindex="-1"{% endif %}>
           <span class="icon">
             <i class="fas fa-angle-double-left"></i>
           </span>
           Previous
         </a>
-        <a class="pagination-next" href='{{ paginator.next }}' {% if not paginator.next %}disabled{% endif %}>
+        <a class="pagination-next" {% if paginator.next %}href='{{ paginator.next }}'{% else %}aria-disabled="true" tabindex="-1"{% endif %}>
           Next page
           <span class="icon">
             <i class="fas fa-angle-double-right"></i>

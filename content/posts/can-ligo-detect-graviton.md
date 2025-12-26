@@ -88,12 +88,7 @@ neutrinos.
 
 Special thanks to [KaTeX] for rendering the math on this site.[^1]
 
-*N.B. There's a good [follow-up
-post](https://web.archive.org/web/20090708032512/http://blogs.discovermagazine.com:80/cosmicvariance/2009/07/05/catching-the-waves/)
-on [Cosmic Variance](https://web.archive.org/web/20191120024349/http://blogs.discovermagazine.com/cosmicvariance/),
-along with an [earlier
-entry](https://web.archive.org/web/20170409163629/http://blogs.discovermagazine.com/cosmicvariance/2007/04/25/the-difficult-childhood-of-gravitational-waves/)
-giving some good background information.*
+*N.B. There were good follow-up posts on the now-defunct Cosmic Variance blog (formerly at Discover Magazine) that provided background information on gravitational waves, including "Catching the Waves" (2009) and "The Difficult Childhood of Gravitational Waves" (2007).*
 
 [^1]: This site is built with [Zola] (theme: DeepThought) and uses [KaTeX] auto-render for [LaTeX]-style math.
 

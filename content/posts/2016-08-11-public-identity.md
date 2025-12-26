@@ -179,7 +179,7 @@ Here are two videos from CloudFlare on boosting site speed and security:
 [10]: https://www.rfc-editor.org/rfc/rfc7208
 [11]: https://dmarc.org
 [12]: https://1password.com
-[13]: https://web.archive.org/web/20240620160445/https://konklone.com/post/github-pages-now-sorta-supports-https-so-use-it
+[13]: https://help.github.com/articles/securing-your-github-pages-site-with-https/
 [14]: https://en.internet.nl
 [15]: https://keybase.io/blog/2014-10-08/the-horror-of-a-secure-golden-key
 [16]: http://www.zdnet.com/article/microsoft-secure-boot-key-debacle-causes-security-panic/

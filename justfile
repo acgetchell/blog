@@ -85,7 +85,16 @@ toml-fmt:
         exit 1
     fi
 
-    uvx --from taplo taplo fmt config.toml
+    files=()
+    while IFS= read -r -d '' file; do
+        files+=("$file")
+    done < <(git ls-files -z '*.toml')
+
+    if [ "${#files[@]}" -gt 0 ]; then
+        uvx --from taplo taplo fmt "${files[@]}"
+    else
+        echo "No TOML files found to format."
+    fi
 
 toml-fmt-check:
     #!/usr/bin/env bash
@@ -95,7 +104,16 @@ toml-fmt-check:
         exit 1
     fi
 
-    uvx --from taplo taplo fmt --check config.toml
+    files=()
+    while IFS= read -r -d '' file; do
+        files+=("$file")
+    done < <(git ls-files -z '*.toml')
+
+    if [ "${#files[@]}" -gt 0 ]; then
+        uvx --from taplo taplo fmt --check "${files[@]}"
+    else
+        echo "No TOML files found to check."
+    fi
 
 toml-lint:
     #!/usr/bin/env bash
@@ -105,4 +123,13 @@ toml-lint:
         exit 1
     fi
 
-    uvx --from taplo taplo lint config.toml
+    files=()
+    while IFS= read -r -d '' file; do
+        files+=("$file")
+    done < <(git ls-files -z '*.toml')
+
+    if [ "${#files[@]}" -gt 0 ]; then
+        uvx --from taplo taplo lint "${files[@]}"
+    else
+        echo "No TOML files found to lint."
+    fi

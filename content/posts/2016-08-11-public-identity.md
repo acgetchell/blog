@@ -172,7 +172,7 @@ Here are two videos from CloudFlare on boosting site speed and security:
 [3]: https://proton.me
 [4]: https://adamgetchell.org
 [5]: https://joker.com
-[6]: http://dnssec.net
+[6]: https://grokipedia.com/page/Domain_Name_System_Security_Extensions
 [7]: https://www.cloudflare.com
 [9]: https://www.rfc-editor.org/rfc/rfc6376
 [10]: https://www.rfc-editor.org/rfc/rfc7208

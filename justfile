@@ -75,13 +75,28 @@ spell:
     fi
 
     CSPELL_VERSION="9.4.0"
-    npx --yes "cspell@${CSPELL_VERSION}" --config cspell.json content templates config.toml
+    
+    files=()
+    while IFS= read -r -d '' file; do
+        files+=("$file")
+    done < <(git ls-files -z '*.md' '*.toml')
+    
+    # Add templates directory
+    while IFS= read -r -d '' file; do
+        files+=("$file")
+    done < <(git ls-files -z 'templates/*')
+    
+    if [ "${#files[@]}" -gt 0 ]; then
+        npx --yes "cspell@${CSPELL_VERSION}" --config cspell.json "${files[@]}"
+    else
+        echo "No files found to spell check."
+    fi
 
 toml-fmt:
     #!/usr/bin/env bash
     set -euo pipefail
-    if ! command -v uvx >/dev/null; then
-        echo "❌ 'uvx' not found. Install uv (includes uvx): brew install uv"
+    if ! command -v taplo >/dev/null; then
+        echo "❌ 'taplo' not found. Install: cargo install taplo-cli"
         exit 1
     fi
 
@@ -91,7 +106,7 @@ toml-fmt:
     done < <(git ls-files -z '*.toml')
 
     if [ "${#files[@]}" -gt 0 ]; then
-        uvx --from taplo taplo fmt "${files[@]}"
+        taplo fmt "${files[@]}"
     else
         echo "No TOML files found to format."
     fi
@@ -99,8 +114,8 @@ toml-fmt:
 toml-fmt-check:
     #!/usr/bin/env bash
     set -euo pipefail
-    if ! command -v uvx >/dev/null; then
-        echo "❌ 'uvx' not found. Install uv (includes uvx): brew install uv"
+    if ! command -v taplo >/dev/null; then
+        echo "❌ 'taplo' not found. Install: cargo install taplo-cli"
         exit 1
     fi
 
@@ -110,7 +125,7 @@ toml-fmt-check:
     done < <(git ls-files -z '*.toml')
 
     if [ "${#files[@]}" -gt 0 ]; then
-        uvx --from taplo taplo fmt --check "${files[@]}"
+        taplo fmt --check "${files[@]}"
     else
         echo "No TOML files found to check."
     fi
@@ -118,8 +133,8 @@ toml-fmt-check:
 toml-lint:
     #!/usr/bin/env bash
     set -euo pipefail
-    if ! command -v uvx >/dev/null; then
-        echo "❌ 'uvx' not found. Install uv (includes uvx): brew install uv"
+    if ! command -v taplo >/dev/null; then
+        echo "❌ 'taplo' not found. Install: cargo install taplo-cli"
         exit 1
     fi
 
@@ -129,7 +144,7 @@ toml-lint:
     done < <(git ls-files -z '*.toml')
 
     if [ "${#files[@]}" -gt 0 ]; then
-        uvx --from taplo taplo lint "${files[@]}"
+        taplo lint "${files[@]}"
     else
         echo "No TOML files found to lint."
     fi

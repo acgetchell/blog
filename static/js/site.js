@@ -124,7 +124,7 @@ function formatSearchResultItem(item, terms) {
   );
 }
 
-function search() {
+function initSearch() {
   const $searchInput = document.getElementById("search");
   const $searchResults = document.querySelector(".search-results");
   const $searchResultsItems = document.querySelector(".search-results__items");
@@ -252,12 +252,8 @@ function documentReadyCallback() {
     });
   }
 
-  const searchEl = document.getElementById("search");
-  if (searchEl) {
-    searchEl.addEventListener("keyup", () => {
-      search();
-    });
-  }
+  // Initialize search functionality
+  initSearch();
 
   const darkModeToggle = document.getElementById("dark-mode");
   if (darkModeToggle) {

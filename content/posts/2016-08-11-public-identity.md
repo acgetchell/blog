@@ -103,8 +103,8 @@ Now, back to email! Just like we don't want someone to spoof our domain, we
 don't want to someone to spoof emails. Time for [DKIM][9], [SPF][10], and
 [DMARC][11].
 
-ProtonMail has a fantastic guide to setting up [Anti-spoofing for Custom
-Domains][8]. Again, I'll wait while you read it.
+ProtonMail provides guides for setting up anti-spoofing for custom domains,
+including configuring DKIM, SPF, and DMARC records.
 
 Whew! That was a long detour, but we finally have a secure email address to use
 for [Keybase][1].
@@ -169,15 +169,14 @@ Here are two videos from CloudFlare on boosting site speed and security:
 
 [1]: https://keybase.io/docs/kbfs
 [2]: https://keybase.io/adamgetchell
-[3]: https://protonmail.com
+[3]: https://proton.me
 [4]: https://adamgetchell.org
 [5]: https://joker.com
 [6]: http://dnssec.net
 [7]: https://www.cloudflare.com
-[8]: https://protonmail.com/support/knowledge-base/anti-spoofing/
 [9]: https://www.rfc-editor.org/rfc/rfc6376
 [10]: https://www.rfc-editor.org/rfc/rfc7208
-[11]: https://dmarc.org
+[11]: https://en.wikipedia.org/wiki/DMARC
 [12]: https://1password.com
 [13]: https://help.github.com/articles/securing-your-github-pages-site-with-https/
 [14]: https://en.internet.nl

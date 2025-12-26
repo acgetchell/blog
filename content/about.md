@@ -17,9 +17,9 @@ This site represents my personal thoughts on various topics.
 ## Selected works
 
 - [CDT-plusplus](/CDT-plusplus/)
-- [Delaunay Triangulations in Rust](https://docs.rs/delaunay/latest/delaunay/)
+- [Delaunay Triangulations in Rust](https://crates.io/crates/delaunay)
 - [Mundus Atrox](/mundus-atrox/)
-- [Stack-based linear algebra](https://docs.rs/la-stack/latest/la_stack/)
+- [Stack-based linear algebra](https://crates.io/crates/la-stack)
 - [Traversable Lorentzian Wormholes](/papers/TraversableLorentzianWormholes-Overview.pdf)
 
 ## Contact / follow

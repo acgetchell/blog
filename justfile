@@ -148,3 +148,39 @@ toml-lint:
     else
         echo "No TOML files found to lint."
     fi
+
+write title:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    if ! command -v code >/dev/null; then
+        echo "❌ 'code' CLI not found. In VS Code run: Shell Command: Install \"code\" command in PATH." >&2
+        exit 1
+    fi
+
+    title="{{title}}"
+    if [[ -z "${title// }" ]]; then
+        echo "Usage: just write \"My Post Title\"" >&2
+        exit 1
+    fi
+    safe_title=${title//\"/\\\"}
+
+    slug=$(printf '%s' "$title" \
+        | iconv -t ascii//TRANSLIT \
+        | tr '[:upper:]' '[:lower:]' \
+        | tr -cs 'a-z0-9' '-' \
+        | sed 's/^-//; s/-$//; s/--*/-/g')
+    [[ -z "$slug" ]] && slug="post"
+
+    today=$(date +%Y-%m-%d)
+    datetime=$(date +"%Y-%m-%dT%H:%M:%S%z" | sed 's/\([0-9][0-9]\)\([0-9][0-9]\)$/\1:\2/')
+    filepath="content/posts/${today}-${slug}.md"
+
+    if [[ ! -f "$filepath" ]]; then
+        printf '+++\n' >"$filepath"
+        printf 'title = "%s"\n' "$safe_title" >>"$filepath"
+        printf 'date = %s\n' "$datetime" >>"$filepath"
+        printf 'draft = true\n\n[taxonomies]\ntags = []\n+++\n\nYour markdown content goes here.\n' >>"$filepath"
+    fi
+
+    code "$filepath"

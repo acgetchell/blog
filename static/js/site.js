@@ -292,6 +292,17 @@ function documentReadyCallback() {
       new chartXkcd[type](svg, chartData);
     });
   }
+  const sanitizeUrl = window.sanitizeUrl || (window.sanitizeUrl = (candidate, fallback) => {
+    try {
+      const url = new URL(candidate, window.location.origin);
+      if (url.protocol === "http:" || url.protocol === "https:") {
+        return url.href;
+      }
+    } catch (err) {
+      // ignore invalid URL
+    }
+    return fallback;
+  });
 
   if (typeof Galleria !== "undefined") {
     document.querySelectorAll(".galleria").forEach((el, i) => {
@@ -301,9 +312,11 @@ function documentReadyCallback() {
 
       for (let image of images) {
         const a = document.createElement('a');
-        a.href = image.src;
+        const safeHref = sanitizeUrl(image.src, "#");
+        const safeImgSrc = sanitizeUrl(image.src, "");
+        a.href = safeHref;
         const img = document.createElement('img');
-        img.src = image.src;
+        img.src = safeImgSrc;
         img.setAttribute('data-title', image.title);
         img.setAttribute('data-description', image.description);
         a.appendChild(img);

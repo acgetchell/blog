@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Search</h1>
+
+<input id="search" type="search" placeholder="Search…" autofocus />
+
+<ul id="results"></ul>
+{% endblock content %}
+
+{% block custom_js %}
+<script src="{{ get_url(path='elasticlunr.min.js') }}"></script>
+<script>
+  const input = document.getElementById("search");
+  const results = document.getElementById("results");
+
+  console.debug("search: init", {
+    hasInput: !!input,
+    hasResults: !!results
+  });
+
+  let index = null;
+
+  function tryLoadIndex() {
+    // Zola’s generated JS typically defines a global `searchIndex` (var searchIndex = {...})
+    // Normalize it onto window.searchIndex so the rest of the code is stable.
+    if (typeof window.searchIndex === "undefined" && typeof searchIndex !== "undefined") {
+      window.searchIndex = searchIndex;
+    }
+
+    if (window.elasticlunr && window.searchIndex) {
+      index = window.elasticlunr.Index.load(window.searchIndex);
+      console.debug("search: index loaded", index);
+      return true;
+    }
+    return false;
+  }
+
+  if (!tryLoadIndex()) {
+    const idxUrl = "{{ get_url(path='search_index.' ~ lang ~ '.js') }}";
+    console.debug("search: fetching index", idxUrl);
+
+    fetch(idxUrl)
+      .then(r => {
+        console.debug("search: index response", { ok: r.ok, status: r.status, url: r.url });
+        return r.text();
+      })
+      .then(js => {
+        console.debug("search: index payload length", js.length);
+        // Evaluate the index JS so `searchIndex` becomes available.
+        // eslint-disable-next-line no-eval
+        eval(js);
+        console.debug("search: after eval", {
+          hasWindowSearchIndex: typeof window.searchIndex !== "undefined",
+          hasGlobalSearchIndex: typeof searchIndex !== "undefined",
+          hasElasticlunr: !!window.elasticlunr
+        });
+        tryLoadIndex();
+      })
+      .catch(err => console.error("search: index load failed", err));
+  }
+
+  input.addEventListener("input", () => {
+    results.innerHTML = "";
+
+    if (!input.value || !index) {
+      console.debug("search: skip search", { value: input.value, indexReady: !!index });
+      return;
+    }
+
+    console.debug("search: query", input.value);
+
+    index.search(input.value, { expand: true }).forEach(hit => {
+      const item = window.searchIndex.docs[hit.ref];
+      const li = document.createElement("li");
+      li.innerHTML = `<a href="${item.permalink}">${item.title}</a>`;
+      results.appendChild(li);
+    });
+  });
+</script>
+{% endblock custom_js %}

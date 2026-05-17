@@ -25,7 +25,7 @@ jobs:
         uses: ./.github/actions/run-just-ci
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e  # v4.0.0 (tag is annotated; tag object 47f197a2200b...)
+        uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453  # v4.0.0 (tag is annotated; tag object 47f197a2200b...)
         with:
           personal_token: ${{ secrets.TOKEN }}
           external_repository: acgetchell/acgetchell.github.io
